@@ -1,27 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct stack
+typedef struct stack
 {
     int size;
     int top;
     int *arr;
-};
-int isempty(struct stack *ptr)
+} stack;
+
+stack *make_stack(int size)
+{
+    stack *val = malloc(sizeof(stack));
+    val->size = size;
+    val->top = -1;
+    val->arr = malloc(val->size * sizeof(int));
+    return val;
+}
+int isempty(stack *ptr)
 {
     if (ptr->top == -1)
         return 1;
     else
         return 0;
 }
-int isfull(struct stack *ptr)
+int isfull(stack *ptr)
 {
     if (ptr->top == ptr->size - 1)
         return 1;
     else
         return 0;
 }
-void push(int value, struct stack *ptr)
+void push(int value, stack *ptr)
 {
     if (isfull(ptr))
     {
@@ -29,11 +38,11 @@ void push(int value, struct stack *ptr)
     }
     else
     {
-        ptr->arr[ptr->top] = value;
         ptr->top++;
+        ptr->arr[ptr->top] = value;
     }
 }
-int pop(struct stack *ptr)
+int pop(stack *ptr)
 {
     if (isempty(ptr))
     {
@@ -45,58 +54,30 @@ int pop(struct stack *ptr)
         return ptr->arr[ptr->top + 1];
     }
 }
-int stacktop(struct stack *ptr)
+int stacktop(stack *ptr)
 {
     return ptr->arr[ptr->top];
 }
+
+void print_stack(stack *ptr)
+{
+    if (ptr->top == -1)
+        printf("\nStack is empty");
+    else
+        for (int i = 0; i <= ptr->top; i++)
+            printf("\n%d", ptr->arr[i]);
+}
+
 int main()
 {
-    struct stack *val = (struct stack *)malloc(sizeof(struct stack));
-    val->size = 5;
-    val->top = -1;
-    val->arr = malloc(val->size * sizeof(int));
     printf("Stack made successfully");
-    int n, value, exit;
-
-    do
-    {
-        printf("\n\nEnter choice to\n1. push\n2. pop\n3. Top -> ");
-        scanf("%d", &n);
-
-        switch (n)
-        {
-
-        case 1:
-            printf("\nEnter a element to push-> ");
-            scanf("%d", &value);
-            push(value, val);
-            break;
-
-        case 2:
-            value = pop(val);
-            if (value == -1)
-                printf("\nStack is empty");
-            else
-                printf("\nPopped value = %d", value);
-            break;
-
-        case 3:
-            value = stacktop(val);
-            if (value == -1)
-                printf("\nStack is empty");
-            else
-                printf("\nTop value = %d", value);
-            break;
-
-        default:
-            printf("\nInvalid choice!");
-        }
-
-        printf("exit?(0/1) ");
-        scanf("%d", &exit);
-    } while (exit);
-    // preventing memory leakage
+    stack *val = make_stack(5);
+    push(10, val);
+    push(12, val);
+    push(13, val);
+    print_stack(val);
     free(val->arr);
     free(val);
+
     return 0;
 }

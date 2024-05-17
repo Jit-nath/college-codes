@@ -29,8 +29,8 @@ void infixToPostfix(char s[])
     char result[1000];
     int resultIndex = 0;
     int len = strlen(s);
-    char stack[1000];
-    int stackIndex = -1;
+    char[1000];
+    int Index = -1;
 
     for (int i = 0; i < len; i++)
     {
@@ -41,38 +41,38 @@ void infixToPostfix(char s[])
         {
             result[resultIndex++] = c;
         }
-        // If the scanned character is an ‘(‘, push it to the stack.
+        // If the scanned character is an ‘(‘, push it to the .
         else if (c == '(')
         {
-            stack[++stackIndex] = c;
+            [++Index] = c;
         }
-        // If the scanned character is an ‘)’, pop and add to the output string from the stack
+        // If the scanned character is an ‘)’, pop and add to the output string from the
         // until an ‘(‘ is encountered.
         else if (c == ')')
         {
-            while (stackIndex >= 0 && stack[stackIndex] != '(')
+            while (Index >= 0 &&[Index] != '(')
             {
-                result[resultIndex++] = stack[stackIndex--];
+                result[resultIndex++] = [Index--];
             }
-            stackIndex--; // Pop '('
+            Index--; // Pop '('
         }
         // If an operator is scanned
         else
         {
-            while (stackIndex >= 0 && (prec(s[i]) < prec(stack[stackIndex]) ||
-                                       prec(s[i]) == prec(stack[stackIndex]) &&
-                                           associativity(s[i]) == 'L'))
+            while (Index >= 0 && (prec(s[i]) < prec([Index]) ||
+                                  prec(s[i]) == prec([Index]) &&
+                                      associativity(s[i]) == 'L'))
             {
-                result[resultIndex++] = stack[stackIndex--];
+                result[resultIndex++] = [Index--];
             }
-            stack[++stackIndex] = c;
+            [++Index] = c;
         }
     }
 
-    // Pop all the remaining elements from the stack
-    while (stackIndex >= 0)
+    // Pop all the remaining elements from the
+    while (Index >= 0)
     {
-        result[resultIndex++] = stack[stackIndex--];
+        result[resultIndex++] = [Index--];
     }
 
     result[resultIndex] = '\0';

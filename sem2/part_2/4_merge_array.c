@@ -1,33 +1,16 @@
 #include <stdio.h>
+#define SIZE1 100
+#define SIZE2 100
 int main() {
-    int arr1[100], arr2[100], mergedArray[200];
-    int length1, length2, mergedSize;
-
-    // Input size and elements of first array
-    printf("Enter the number of elements for first array-> ");
-    scanf("%d",&length1);
-    printf("\nEnter the elements:\n");
-    for(int i =0 ; i<length1; i++)
-    {
-        printf("%d-> ",i);
-        scanf("%d",&arr1[i]);
-    }
-
-    // Input size and elements of second array
-    printf("Enter the number of elements for seconf array-> ");
-    scanf("%d",&length2);
-    printf("\nEnter the elements:\n");
-    for(int i =0 ; i<length2; i++)
-    {
-        printf("%d-> ",i);
-        scanf("%d",&arr2[i]);
-    }
+    int arr1[SIZE1] = {1,2,3,4}, arr2[SIZE2]={5,6,7,8}, mergedArray[SIZE1+SIZE2];
+    int length1 = 4,length2 = 4;
+    int mergedSize = length1+length2;
+    int index = 0;
 
     // Merging the arrays
-    mergedSize = length1 + length2;
-    int index = 0;
     for (int i = 0; i < length1; i++) {
         mergedArray[index++] = arr1[i];
+        
     }
     for (int i = 0; i < length2; i++) {
         mergedArray[index++] = arr2[i];
@@ -36,7 +19,7 @@ int main() {
     // Printing the merged array
     printf("Merged array: ");
     for (int i = 0; i < mergedSize; i++) {
-        printf(">%d   ", mergedArray[i]);
+        printf(" >%d ", mergedArray[i]);
     }
     printf("\n");
 

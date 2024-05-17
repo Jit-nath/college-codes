@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
-
 #define MAX_SIZE 100
 
-// Structure for queue
 struct Queue
 {
     int items[MAX_SIZE];
@@ -11,26 +9,22 @@ struct Queue
     int rear;
 };
 
-// Function to initialize the queue
 void initializeQueue(struct Queue *queue)
 {
     queue->front = -1;
     queue->rear = -1;
 }
 
-// Function to check if the queue is full
 bool isFull(struct Queue *queue)
 {
     return (queue->rear == MAX_SIZE - 1);
 }
 
-// Function to check if the queue is empty
 bool isEmpty(struct Queue *queue)
 {
     return (queue->front == -1 && queue->rear == -1);
 }
 
-// Function to return the size of the queue
 int size(struct Queue *queue)
 {
     if (isEmpty(queue))
@@ -40,7 +34,6 @@ int size(struct Queue *queue)
     return queue->rear - queue->front + 1;
 }
 
-// Function to enqueue an element into the queue
 void enqueue(struct Queue *queue, int value)
 {
     if (isFull(queue))
@@ -59,7 +52,6 @@ void enqueue(struct Queue *queue, int value)
     }
 }
 
-// Function to dequeue an element from the queue
 int dequeue(struct Queue *queue)
 {
     if (isEmpty(queue))
@@ -84,7 +76,6 @@ int dequeue(struct Queue *queue)
     }
 }
 
-// Function to return the front element of the queue
 int front(struct Queue *queue)
 {
     if (isEmpty(queue))
@@ -98,7 +89,6 @@ int front(struct Queue *queue)
     }
 }
 
-// Function to return the rear element of the queue
 int rear(struct Queue *queue)
 {
     if (isEmpty(queue))

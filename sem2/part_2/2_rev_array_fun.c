@@ -3,7 +3,7 @@
 void reverseArray(int *p, int length);
 
 int main() {
-    int arr[100],length;
+    int arr[100] , length;
     int *p = arr;
     printf("Enter the number of elements-> ");
     scanf("%d",&length);
@@ -27,7 +27,7 @@ int main() {
 
 void reverseArray(int *p, int length) {
     int start_index = 0;
-    int end_index = length - 1;
+    int end_index = length - 1;//10 - 0-9
     int temp;
 
     while (start_index < end_index) {
@@ -35,6 +35,6 @@ void reverseArray(int *p, int length) {
         p[start_index] = p[end_index];
         p[end_index] = temp;
         start_index++;
-        end_index--;
+        end_index--; 
     }
 }

@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 void array_insert_element(int *array , int length){
     int element , position ;
@@ -44,18 +45,18 @@ void array_delete_element(int *array , int length){
     }
 }
 int main() {
-    int arr[100];
-    int length;
+    int arr[10]={1,2,3};
+    int length = 3;
     int *p = arr;
     // Inserting elements into the array
-    printf("Enter the number of elements-> ");
-    scanf("%d",&length);
-    printf("\nEnter the elements \n");
-    for(int i =0 ; i<length; i++)
-    {
-        printf("%d-> ",i);
-        scanf("%d",&arr[i]);
-    }
+    // printf("Enter the number of elements-> ");
+    // scanf("%d",&length);
+    // printf("\nEnter the elements \n");
+    // for(int i =0 ; i<length; i++)
+    // {
+    //     printf("%d-> ",i);
+    //     scanf("%d",&arr[i]);
+    // }
     printf("\n");
     array_insert_element(p,length);
     array_delete_element(p,length);

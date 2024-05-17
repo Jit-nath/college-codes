@@ -6,8 +6,9 @@
 void merge(int arr[], int l, int m, int r)
 {
     int i, j, k;
-    int n1 = m - l + 1;
-    int n2 = r - m;
+    int n1 = 0, n2 = 0;
+    n1 = m - l + 1;
+    n2 = r - m;
 
     // Create temporary arrays
     int L[n1], R[n2];
