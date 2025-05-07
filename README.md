@@ -1,2 +1,1 @@
-# Assignments
-college assignments
+# ignore this
