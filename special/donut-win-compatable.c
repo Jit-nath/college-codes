@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
-#include <windows.h>
+#include <unistd.h>
 
 int main(){
     float A = 0, B = 0;
@@ -44,7 +44,7 @@ int main(){
             A += 0.00004;
             B += 0.00002;
         }
-        Sleep(3);
+        usleep(3000);
     }
     return 0;
 }
